@@ -17,7 +17,7 @@ module.exports = function (router) {
     });
 
     router.get("/scrape", function (req, res) {
-        axios.get("https://nytimes.com/").then(function (response) {
+        axios.get("https://www.nytimes.com/").then(function (response) {
 
             let $ = cheerio.load(response.data);
 

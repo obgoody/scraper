@@ -1,5 +1,5 @@
 const express = require("express");
-const epressHandlebars = require("express-handlebars");
+const expressHandlebars = require("express-handlebars");
 // const logger = require("morgan");
 const mongoose = require("mongoose");
 
@@ -25,7 +25,7 @@ app.use(router);
 
 const CONNECTION_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScraper";
 
-mongoose.connect(CONNECTION_URI, { useMongoClient: true }).then(() => {
+mongoose.connect(CONNECTION_URI).then(() => {
     console.log('Connected to MongoDB.');
 }).catch(err => console.log(err));
 
