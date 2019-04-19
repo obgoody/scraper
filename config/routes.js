@@ -70,6 +70,7 @@ module.exports = function (router) {
         db.Note.create(req.body).then(function (note) {
             return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { note: note._id } }, { new: true })
         }).then(function (result) {
+            console.log(result);
             let article = {
                 result: result
             };
