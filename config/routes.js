@@ -17,22 +17,27 @@ module.exports = function (router) {
     });
 
     router.get("/scrape", function (req, res) {
-        axios.get("https://www.nytimes.com/").then(function (response) {
+        axios.get("https://news.ycombinator.com/").then(function (response) {
 
             let $ = cheerio.load(response.data);
 
-            $(".post-block").each(function (i, element) {
+            $(".athing").each(function (i, element) {
 
                 let result = {};
+                
 
-                result.title = $(element).find(".post-block__title").children().text().trim();
-                result.link = $(element).find(".post-block__title").children().attr("href");
-                result.summary = $(element).find(".post-block__content").text().trim();
-
+                result.title = $(element).find(".title").children().text().trim();
+                
+                result.link = $(element).find(".storylink").attr("href");
+                
+                result.summary = $(element).find(".score").children();
+                
+                
+                console.log("scraped");
                 // Using our Article model, create a new entry
                 // This effectively passes the result object to the entry (and the title and link)
                 let entry = new Article(result);
-                // Now, save that entry to the db
+                // // Now, save that entry to the db
                 entry.save(function (err, doc) {
                     // Log any errors
                     if (err) {
