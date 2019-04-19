@@ -21,7 +21,7 @@ app.set("view engine", "handlebars");
 
 app.use(router);
 
-
+var CONNECTION_URI = "mongodb://heroku_8tfsjppw:lts9cmldj62b5vnt0p0clg22k8@ds145146.mlab.com:45146/heroku_8tfsjppw"
 
 const CONNECTION_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScraper";
 
